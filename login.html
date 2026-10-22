@@ -5,32 +5,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Login - PAWPATROL</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="login.css">
     <script defer src="local-auth.js"></script>
 </head>
 
 <body class="login-page">
-    <main class="login-card">
-        <div class="logo-circle">🐶</div>
-        <h1>PAWPATROL</h1>
-        <p class="login-subtitle" id="loginSubtitle">Employee sign in</p>
 
-        <form id="loginForm">
-            <label for="loginEmail">Email</label>
-            <input id="loginEmail" type="email" autocomplete="username" required>
+    <div class="login-backdrop" aria-hidden="true">
+        <span class="blob blob-pink"></span>
+        <span class="blob blob-blue"></span>
+        <span class="blob blob-amber"></span>
+    </div>
 
-            <label for="loginPassword">Password</label>
-            <input id="loginPassword" type="password" autocomplete="current-password" minlength="8" required>
+    <main class="login-double-card" data-mode="signin">
+        
+        <div class="login-info-panel">
+            <div class="brand-header">
+                <div class="logo-circle login-logo">🐶</div>
+                <div class="brand-text">
+                    <h1>PAWPATROL</h1>
+                    <p>MANAGEMENT SYSTEM</p>
+                </div>
+            </div>
 
-            <p class="login-help" id="passwordHelp" hidden>Use at least 8 characters for your password.</p>
-            <p id="loginMessage" class="login-message" role="alert" aria-live="polite"></p>
+            <div class="info-badge">
+                <span class="pill">UX</span>
+                <span class="line"></span>
+                <span class="text">USER EXPERIENCE</span>
+            </div>
 
-            <button id="loginButton" class="save-button login-submit" type="submit">Sign in</button>
-        </form>
+            <h2 class="info-title">
+                Manage<br>
+                <span class="text-pink">Smarter</span>
+            </h2>
 
-        <button id="modeButton" class="login-mode-button" type="button">Create an account</button>
-        <p class="login-notice">This simple account is saved only in this browser. It is for demos, not sensitive or shared business data.</p>
+            <p class="info-subtitle">
+                Built for efficiency, designed for you.<br>
+                Access your tools, monitor your data, and stay in control — anytime, anywhere.
+            </p>
+
+            <div class="info-features">
+                <div class="feature-row">
+                    <div class="f-icon pink">🛡️</div>
+                    <div class="f-text">
+                        <h4>Secure</h4>
+                        <p>Your data is safe with us.</p>
+                    </div>
+                </div>
+                <div class="feature-row">
+                    <div class="f-icon blue">⚡</div>
+                    <div class="f-text">
+                        <h4>Fast</h4>
+                        <p>Get things done in no time.</p>
+                    </div>
+                </div>
+                <div class="feature-row">
+                    <div class="f-icon purple">✨</div>
+                    <div class="f-text">
+                        <h4>Simple</h4>
+                        <p>A clean and modern experience.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="floating-graphic">
+                <div class="glass-paw">🐾</div>
+            </div>
+        </div>
+
+        <div class="login-form-panel">
+            
+            <div class="form-header">
+                <span class="section-label" id="modeLabel">WELCOME BACK</span>
+                <h2 class="form-title" id="formTitle">Welcome back</h2>
+                <p class="login-subtitle" id="loginSubtitle">Glad to see you again. Log in to continue.</p>
+            </div>
+
+            <form id="loginForm" class="login-form">
+                <div class="login-field">
+                    <label for="loginEmail">EMAIL</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">✉️</span>
+                        <input id="loginEmail" type="email" autocomplete="username" placeholder="department" required>
+                    </div>
+                </div>
+
+                <div class="login-field">
+                    <label for="loginPassword">PASSWORD</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">🔒</span>
+                        <input id="loginPassword" type="password" autocomplete="current-password" minlength="8" placeholder="••••••••" required>
+                        <button type="button" class="password-toggle" id="togglePassword">👁️</button>
+                    </div>
+                </div>
+
+                <p class="login-help" id="passwordHelp" hidden>Use at least 8 characters for your password.</p>
+                <p id="loginMessage" class="login-message" role="alert" aria-live="polite"></p>
+
+                <button id="loginButton" class="login-submit login-glass-button" type="submit">
+                    <span class="icon">→</span> Sign in
+                </button>
+            </form>
+
+            <div class="login-divider"><span>or</span></div>
+
+            <button id="modeButton" class="login-mode-button login-glass-button" type="button">
+                <span class="icon">👤+</span> Create an account
+            </button>
+            
+            <p class="login-notice">This simple account is saved only in this browser. It is for demos, not sensitive or shared business data.</p>
+        </div>
+
     </main>
 </body>
-
 </html>

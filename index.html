@@ -18,15 +18,13 @@
             background: linear-gradient(180deg, #fff 0%, #fffafd 100%);
         }
 
-        .dashboard-page aside a,
-        .dashboard-page .logout-button {
+        .dashboard-page aside a {
             position: relative;
             overflow: hidden;
             transition: background 180ms ease, color 180ms ease, transform 180ms ease, box-shadow 180ms ease, padding-left 180ms ease, filter 180ms ease;
         }
 
-        .dashboard-page aside a::before,
-        .dashboard-page .logout-button::before {
+        .dashboard-page aside a::before {
             content: "";
             position: absolute;
             inset: 0;
@@ -37,8 +35,7 @@
             pointer-events: none;
         }
 
-        .dashboard-page aside a:hover::before,
-        .dashboard-page .logout-button:hover::before {
+        .dashboard-page aside a:hover::before {
             opacity: 1;
             transform: translateX(110%);
         }
@@ -52,17 +49,9 @@
         }
 
         .dashboard-page aside a:active,
-        .dashboard-page .logout-button:active,
-        .dashboard-page aside a.nav-pressed,
-        .dashboard-page .logout-button.nav-pressed {
+        .dashboard-page aside a.nav-pressed {
             transform: scale(0.98);
             box-shadow: inset 0 0 0 1px rgba(223, 82, 118, 0.12);
-        }
-
-        .dashboard-page .logout-button:hover {
-            background: linear-gradient(90deg, rgba(223, 82, 118, 0.08), rgba(255,255,255,0.8));
-            transform: translateX(2px);
-            filter: brightness(1.04);
         }
 
         .dashboard-page main > h2 {
@@ -139,17 +128,9 @@
             animation: dashboard-rise-in 420ms both;
         }
 
-        .card:nth-child(2) {
-            animation-delay: 70ms;
-        }
-
-        .card:nth-child(3) {
-            animation-delay: 140ms;
-        }
-
-        .card:nth-child(4) {
-            animation-delay: 210ms;
-        }
+        .card:nth-child(2) { animation-delay: 70ms; }
+        .card:nth-child(3) { animation-delay: 140ms; }
+        .card:nth-child(4) { animation-delay: 210ms; }
 
         .card::after {
             position: absolute;
@@ -175,25 +156,10 @@
             opacity: 0.075;
         }
 
-        .card.pink {
-            color: #df5276;
-            border-top: 3px solid #df5276;
-        }
-
-        .card.blue {
-            color: #438cc5;
-            border-top: 3px solid #438cc5;
-        }
-
-        .card.green {
-            color: #58a850;
-            border-top: 3px solid #66b85d;
-        }
-
-        .card.orange {
-            color: #d9942e;
-            border-top: 3px solid #e9a23d;
-        }
+        .card.pink { color: #df5276; border-top: 3px solid #df5276; }
+        .card.blue { color: #438cc5; border-top: 3px solid #438cc5; }
+        .card.green { color: #58a850; border-top: 3px solid #66b85d; }
+        .card.orange { color: #d9942e; border-top: 3px solid #e9a23d; }
 
         .card .icon {
             transition: transform 220ms ease, box-shadow 220ms ease;
@@ -204,39 +170,21 @@
             box-shadow: 0 6px 12px rgba(35, 71, 107, 0.14);
         }
 
-        .card span {
-            color: #697586;
-        }
-
-        .card strong {
-            color: #25354a;
-            font-size: 27px;
-        }
+        .card span { color: #697586; }
+        .card strong { color: #25354a; font-size: 27px; }
 
         .card.dashboard-card-click {
             animation: dashboard-card-tap 240ms ease-out;
         }
 
         @keyframes dashboard-card-tap {
-            45% {
-                transform: scale(0.97);
-            }
-
-            100% {
-                transform: scale(1);
-            }
+            45% { transform: scale(0.97); }
+            100% { transform: scale(1); }
         }
 
         @keyframes dashboard-rise-in {
-            from {
-                opacity: 0;
-                transform: translateY(12px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .dashboard-page .tables > section,
@@ -287,43 +235,22 @@
             animation: dashboard-click-feedback 300ms ease-out;
         }
 
-        .dashboard-page aside a.nav-pressed,
-        .dashboard-page .logout-button.nav-pressed {
+        .dashboard-page aside a.nav-pressed {
             animation: dashboard-sidebar-press 200ms ease-out;
         }
 
         @keyframes dashboard-sidebar-press {
-            35% {
-                transform: scale(0.98);
-                box-shadow: 0 0 0 4px rgba(223, 82, 118, 0.12);
-            }
-
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(223, 82, 118, 0);
-            }
+            35% { transform: scale(0.98); box-shadow: 0 0 0 4px rgba(223, 82, 118, 0.12); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(223, 82, 118, 0); }
         }
 
         @keyframes dashboard-click-feedback {
-            35% {
-                transform: scale(0.96);
-                box-shadow: 0 0 0 4px rgba(223, 82, 118, 0.16);
-            }
-
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(223, 82, 118, 0);
-            }
+            35% { transform: scale(0.96); box-shadow: 0 0 0 4px rgba(223, 82, 118, 0.16); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(223, 82, 118, 0); }
         }
 
-        .cards {
-            align-items: start;
-        }
-
-        .dashboard-card-content {
-            flex: 1;
-            min-width: 0;
-        }
+        .cards { align-items: start; }
+        .dashboard-card-content { flex: 1; min-width: 0; }
 
         .dashboard-view-details {
             display: inline-flex;
@@ -346,29 +273,12 @@
             box-shadow: 0 3px 8px rgba(35, 71, 107, 0.12);
         }
 
-        .dashboard-view-details:active {
-            transform: scale(0.96);
-        }
+        .dashboard-view-details:active { transform: scale(0.96); }
+        .dashboard-view-details:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
 
-        .dashboard-view-details:focus-visible {
-            outline: 2px solid currentColor;
-            outline-offset: 3px;
-        }
-
-        .blue .dashboard-view-details {
-            color: #438cc5;
-            background: #f3f8fc;
-        }
-
-        .green .dashboard-view-details {
-            color: #4b9d45;
-            background: #f3faf2;
-        }
-
-        .orange .dashboard-view-details {
-            color: #b97817;
-            background: #fff8ed;
-        }
+        .blue .dashboard-view-details { color: #438cc5; background: #f3f8fc; }
+        .green .dashboard-view-details { color: #4b9d45; background: #f3faf2; }
+        .orange .dashboard-view-details { color: #b97817; background: #fff8ed; }
 
         .dashboard-card-details {
             width: 100%;
@@ -384,24 +294,12 @@
             cursor: default;
         }
 
-        .dashboard-card-details[hidden] {
-            display: none;
-        }
-
-        .dashboard-card-details:not([hidden]) {
-            animation: dashboard-detail-enter 200ms ease-out;
-        }
+        .dashboard-card-details[hidden] { display: none; }
+        .dashboard-card-details:not([hidden]) { animation: dashboard-detail-enter 200ms ease-out; }
 
         @keyframes dashboard-detail-enter {
-            from {
-                opacity: 0;
-                transform: translateY(8px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .dashboard-detail-heading {
@@ -458,16 +356,8 @@
             box-shadow: 0 6px 14px rgba(35, 71, 107, 0.09);
         }
 
-        .dashboard-detail-item-copy {
-            min-width: 0;
-            flex: 1;
-        }
-
-        .dashboard-detail-item strong,
-        .dashboard-detail-item small {
-            display: block;
-            overflow-wrap: anywhere;
-        }
+        .dashboard-detail-item-copy { min-width: 0; flex: 1; }
+        .dashboard-detail-item strong, .dashboard-detail-item small { display: block; overflow-wrap: anywhere; }
 
         .dashboard-detail-item strong {
             color: #24364b;
@@ -510,34 +400,15 @@
         }
 
         @media (max-width: 700px) {
-            .dashboard-card-details {
-                padding: 14px;
-            }
-
-            .dashboard-detail-list {
-                grid-template-columns: 1fr;
-                max-height: 320px;
-            }
-
-            .dashboard-welcome {
-                min-height: 100px;
-                padding: 18px 20px;
-            }
-
-            .dashboard-welcome h2 {
-                font-size: 22px;
-            }
-
-            .dashboard-welcome::after {
-                right: 8px;
-                font-size: 76px;
-            }
+            .dashboard-card-details { padding: 14px; }
+            .dashboard-detail-list { grid-template-columns: 1fr; max-height: 320px; }
+            .dashboard-welcome { min-height: 100px; padding: 18px 20px; }
+            .dashboard-welcome h2 { font-size: 22px; }
+            .dashboard-welcome::after { right: 8px; font-size: 76px; }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .dashboard-page *,
-            .dashboard-view-details,
-            .dashboard-card-details:not([hidden]) {
+            .dashboard-page *, .dashboard-view-details, .dashboard-card-details:not([hidden]) {
                 animation-duration: 0.01ms !important;
                 animation-iteration-count: 1 !important;
                 scroll-behavior: auto !important;
@@ -550,98 +421,62 @@
 
 <body class="dashboard-page" data-requires-login style="visibility: hidden;">
 
-    <!-- =========================
-         HEADER
-    ========================== -->
-
+    <!-- HEADER -->
     <header>
-
         <div class="logo">
-
-            <div class="logo-circle">
-                🐶
-            </div>
-
+            <div class="logo-circle">🐶</div>
             <div class="logo-text">
                 <h1>PAWPATROL</h1>
                 <span>MANAGEMENT SYSTEM</span>
             </div>
-
         </div>
 
-
-        <div class="admin">
-
-            <strong id="currentUserEmail">Employee</strong>
-            <small>Signed in</small>
-
+        <!-- INTERACTIVE PROFILE WITH DROPDOWN -->
+        <div class="admin-profile-wrapper">
+            <button class="admin-profile-btn" id="profileToggleBtn" type="button">
+                <div class="admin-info">
+                    <strong id="currentUserEmail">Employee</strong>
+                    <small>Signed in</small>
+                </div>
+                <div class="profile-avatar">
+                    🐶
+                </div>
+                <svg class="dropdown-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+            
+            <!-- Dropdown Menu -->
+            <div class="profile-dropdown-menu" id="profileDropdownMenu">
+                <button id="logoutTriggerBtn" class="dropdown-logout-btn" type="button">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                    Sign out
+                </button>
+            </div>
         </div>
-
     </header>
 
-
-
-    <!-- =========================
-         MAIN LAYOUT
-    ========================== -->
-
+    <!-- MAIN LAYOUT -->
     <div class="layout">
-
-
-        <!-- =========================
-             SIDEBAR
-        ========================== -->
-
+        <!-- SIDEBAR -->
         <aside>
-
-            <a href="index.html" class="active">
-                🏠 Dashboard
-            </a>
-
-            <a href="pets.html">
-                🐾 Pets
-            </a>
-
-            <a href="products.html">
-                📦 Products
-            </a>
-
-            <a href="customers.html">
-                👥 Customers
-            </a>
-
-            <a href="sales.html">
-                💰 Sales
-            </a>
-
-            <a href="inventory.html">
-                📊 Inventory
-            </a>
-
-            <a href="employees.html">
-                👨‍💼 Employees
-            </a>
-
-            <a href="reports.html">
-                📈 Reports
-            </a>
-
-            <a href="settings.html">
-                ⚙️ Settings
-            </a>
-
-            <button id="logoutButton" class="logout-button logout" type="button">↪ Sign out</button>
-
+            <a href="index.html" class="active">🏠 Dashboard</a>
+            <a href="pets.html">🐾 Pets</a>
+            <a href="products.html">📦 Products</a>
+            <a href="customers.html">👥 Customers</a>
+            <a href="sales.html">💰 Sales</a>
+            <a href="inventory.html">📊 Inventory</a>
+            <a href="employees.html">👨‍💼 Employees</a>
+            <a href="reports.html">📈 Reports</a>
+            <a href="settings.html">⚙️ Settings</a>
+            
+            <!-- IDINAGDAG NA SIGN OUT SA SIDEBAR -->
+            <button id="sidebarLogoutBtn" class="logout-button" type="button" style="margin-top: auto;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                Sign out
+            </button>
         </aside>
 
-
-
-        <!-- =========================
-             DASHBOARD CONTENT
-        ========================== -->
-
+        <!-- DASHBOARD CONTENT -->
         <main>
-
             <section class="dashboard-welcome">
                 <div class="dashboard-welcome-copy">
                     <span class="dashboard-welcome-label">PAWPATROL · SHOP OVERVIEW</span>
@@ -650,201 +485,77 @@
                 </div>
             </section>
 
-
-            <!-- =========================
-                 STATISTICS CARDS
-            ========================== -->
-
+            <!-- STATISTICS CARDS -->
             <div class="cards">
-                <!-- Total Pets -->
-
                 <div class="card pink">
-
-                    <div class="icon">
-                        🐶
-                    </div>
-
+                    <div class="icon">🐶</div>
                     <div class="dashboard-card-content">
-
                         <span>Total Pets</span>
-
                         <strong id="totalPets">0</strong>
-
-                        <button class="dashboard-view-details" type="button" data-metric="pets" aria-expanded="false" aria-controls="dashboardMetricDetails">
-                            View Details
-                        </button>
-
+                        <button class="dashboard-view-details" type="button" data-metric="pets" aria-expanded="false" aria-controls="dashboardMetricDetails">View Details</button>
                     </div>
-
                 </div>
-
-
-
-                <!-- Total Products -->
 
                 <div class="card blue">
-
-                    <div class="icon">
-                        📦
-                    </div>
-
+                    <div class="icon">📦</div>
                     <div class="dashboard-card-content">
-
                         <span>Total Products</span>
-
                         <strong id="totalProducts">0</strong>
-
-                        <button class="dashboard-view-details" type="button" data-metric="products" aria-expanded="false" aria-controls="dashboardMetricDetails">
-                            View Details
-                        </button>
-
+                        <button class="dashboard-view-details" type="button" data-metric="products" aria-expanded="false" aria-controls="dashboardMetricDetails">View Details</button>
                     </div>
-
                 </div>
-
-
-
-                <!-- Total Customers -->
 
                 <div class="card green">
-
-                    <div class="icon">
-                        👤
-                    </div>
-
+                    <div class="icon">👤</div>
                     <div class="dashboard-card-content">
-
                         <span>Total Customers</span>
-
                         <strong id="totalCustomers">0</strong>
-
-                        <button class="dashboard-view-details" type="button" data-metric="customers" aria-expanded="false" aria-controls="dashboardMetricDetails">
-                            View Details
-                        </button>
-
+                        <button class="dashboard-view-details" type="button" data-metric="customers" aria-expanded="false" aria-controls="dashboardMetricDetails">View Details</button>
                     </div>
-
                 </div>
-
-
-
-                <!-- Today's Sales -->
 
                 <div class="card orange">
-
-                    <div class="icon">
-                        💰
-                    </div>
-
+                    <div class="icon">💰</div>
                     <div class="dashboard-card-content">
-
                         <span>Today's Sales</span>
-
                         <strong id="todaySales">₱0.00</strong>
-
-                        <button class="dashboard-view-details" type="button" data-metric="sales" aria-expanded="false" aria-controls="dashboardMetricDetails">
-                            View Details
-                        </button>
-
+                        <button class="dashboard-view-details" type="button" data-metric="sales" aria-expanded="false" aria-controls="dashboardMetricDetails">View Details</button>
                     </div>
-
                 </div>
-
             </div>
 
             <section class="dashboard-card-details" id="dashboardMetricDetails" aria-live="polite" hidden></section>
 
-
-
-            <!-- =========================
-                 TABLES
-            ========================== -->
-
+            <!-- TABLES -->
             <div class="tables">
-
-
-                <!-- RECENT SALES -->
-
                 <section>
-
-                    <h3>
-                        🛒 Recent Sales
-                    </h3>
-
-
+                    <h3>🛒 Recent Sales</h3>
                     <table>
-
                         <thead>
-
                             <tr>
-
-                                <th>
-                                    Invoice No.
-                                </th>
-
-                                <th>
-                                    Customer
-                                </th>
-
-                                <th>
-                                    Amount
-                                </th>
-
-                                <th>
-                                    Date
-                                </th>
-
+                                <th>Invoice No.</th>
+                                <th>Customer</th>
+                                <th>Amount</th>
+                                <th>Date</th>
                             </tr>
-
                         </thead>
-
-
                         <tbody id="recentSalesBody"></tbody>
-
                     </table>
-
                 </section>
-
-
-
-                <!-- LOW STOCK -->
 
                 <section>
-
-                    <h3>
-                        ⚠️ Low Stock Products
-                    </h3>
-
-
+                    <h3>⚠️ Low Stock Products</h3>
                     <table>
-
                         <thead>
-
                             <tr>
-
-                                <th>
-                                    Product Name
-                                </th>
-
-                                <th>
-                                    Stock
-                                </th>
-
-                                <th>
-                                    Status
-                                </th>
-
+                                <th>Product Name</th>
+                                <th>Stock</th>
+                                <th>Status</th>
                             </tr>
-
                         </thead>
-
-
                         <tbody id="lowStockBody"></tbody>
-
                     </table>
-
                 </section>
-
             </div>
 
             <section class="dashboard-shop-info">
@@ -856,28 +567,36 @@
                     <p><strong>Email</strong><span id="dashboardShopEmail">happypawspetshop@gmail.com</span></p>
                 </div>
             </section>
-
-
         </main>
-
     </div>
 
+    <!-- LOGOUT CONFIRMATION MODAL (CUSTOM) -->
+    <div id="logoutConfirmModal" class="custom-modal-overlay">
+        <div class="custom-modal-content">
+            <div class="custom-modal-icon">⚠️</div>
+            <h3>Are you sure?</h3>
+            <p>Do you really want to sign out? You will need to enter your credentials again.</p>
+            <div class="custom-modal-buttons">
+                <button id="cancelLogoutBtn" class="custom-btn cancel">Cancel</button>
+                <!-- Ito yung original na ID na hinahanap ng local-auth.js -->
+                <button id="logoutButton" class="custom-btn confirm">Yes, Sign out</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
     <script>
         document.addEventListener("click", (event) => {
-            if (!(event.target instanceof Element)) {
-                return;
-            }
+            if (!(event.target instanceof Element)) return;
 
             const control = event.target.closest("button, a, input, select, textarea, [role='button']");
-            if (!control || control.matches(":disabled")) {
-                return;
-            }
+            if (!control || control.matches(":disabled")) return;
 
             control.classList.remove("dashboard-click-feedback");
             void control.offsetWidth;
             control.classList.add("dashboard-click-feedback");
 
-            if (control.matches("aside a, .logout-button")) {
+            if (control.matches("aside a")) {
                 control.classList.remove("nav-pressed");
                 void control.offsetWidth;
                 control.classList.add("nav-pressed");
@@ -885,24 +604,13 @@
         });
 
         document.addEventListener("animationend", (event) => {
-            if (
-                event.animationName === "dashboard-click-feedback" &&
-                event.target instanceof Element
-            ) {
+            if (event.animationName === "dashboard-click-feedback" && event.target instanceof Element) {
                 event.target.classList.remove("dashboard-click-feedback");
             }
-
-            if (
-                event.animationName === "dashboard-card-tap" &&
-                event.target instanceof Element
-            ) {
+            if (event.animationName === "dashboard-card-tap" && event.target instanceof Element) {
                 event.target.classList.remove("dashboard-card-click");
             }
-
-            if (
-                event.target instanceof Element &&
-                event.target.classList.contains("nav-pressed")
-            ) {
+            if (event.target instanceof Element && event.target.classList.contains("nav-pressed")) {
                 event.target.classList.remove("nav-pressed");
             }
         });
@@ -939,14 +647,8 @@
         function readDashboardList(name) {
             const key = DASHBOARD_STORAGE_KEYS[name];
             const storedValue = localStorage.getItem(key);
-            const list = storedValue === null
-                ? DASHBOARD_DEFAULTS[name]
-                : JSON.parse(storedValue);
-
-            if (!Array.isArray(list)) {
-                throw new Error(`The saved data in "${key}" is not a valid list.`);
-            }
-
+            const list = storedValue === null ? DASHBOARD_DEFAULTS[name] : JSON.parse(storedValue);
+            if (!Array.isArray(list)) throw new Error(`The saved data in "${key}" is not a valid list.`);
             return list;
         }
 
@@ -967,19 +669,13 @@
         }
 
         function formatDashboardCurrency(value) {
-            return `₱${Number(value).toLocaleString("en-PH", {
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 2
-            })}`;
+            return `₱${Number(value).toLocaleString("en-PH", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
         }
 
         function isToday(dateValue) {
             const date = new Date(dateValue);
             const today = new Date();
-            return !Number.isNaN(date.getTime()) &&
-                date.getFullYear() === today.getFullYear() &&
-                date.getMonth() === today.getMonth() &&
-                date.getDate() === today.getDate();
+            return !Number.isNaN(date.getTime()) && date.getFullYear() === today.getFullYear() && date.getMonth() === today.getMonth() && date.getDate() === today.getDate();
         }
 
         const dashboardPets = readDashboardList("pets");
@@ -991,36 +687,24 @@
         document.getElementById("totalProducts").textContent = String(dashboardProducts.length);
         document.getElementById("totalCustomers").textContent = String(dashboardCustomers.length);
 
-        const todaysSalesTotal = dashboardSales
-            .filter((sale) => isToday(sale.date))
-            .reduce((total, sale) => total + Number(sale.total), 0);
+        const todaysSalesTotal = dashboardSales.filter((sale) => isToday(sale.date)).reduce((total, sale) => total + Number(sale.total), 0);
         document.getElementById("todaySales").textContent = formatDashboardCurrency(todaysSalesTotal);
 
         const dashboardSettingsValue = localStorage.getItem("petShopSettings");
         if (dashboardSettingsValue !== null) {
             const dashboardSettings = JSON.parse(dashboardSettingsValue);
-            if (
-                !dashboardSettings ||
-                typeof dashboardSettings !== "object" ||
-                Array.isArray(dashboardSettings)
-            ) {
+            if (!dashboardSettings || typeof dashboardSettings !== "object" || Array.isArray(dashboardSettings)) {
                 throw new Error('The saved shop settings in "petShopSettings" are invalid.');
             }
 
-            document.getElementById("dashboardShopName").textContent =
-                dashboardSettings.shopName || "Happy Paws Pet Shop";
-            document.getElementById("dashboardShopAddress").textContent =
-                dashboardSettings.address || "123 Pet Street, Animal City";
-            document.getElementById("dashboardShopPhone").textContent =
-                dashboardSettings.phone || "0912-345-6789";
-            document.getElementById("dashboardShopEmail").textContent =
-                dashboardSettings.email || "happypawspetshop@gmail.com";
+            document.getElementById("dashboardShopName").textContent = dashboardSettings.shopName || "Happy Paws Pet Shop";
+            document.getElementById("dashboardShopAddress").textContent = dashboardSettings.address || "123 Pet Street, Animal City";
+            document.getElementById("dashboardShopPhone").textContent = dashboardSettings.phone || "0912-345-6789";
+            document.getElementById("dashboardShopEmail").textContent = dashboardSettings.email || "happypawspetshop@gmail.com";
         }
 
         const recentSalesBody = document.getElementById("recentSalesBody");
-        const recentSales = [...dashboardSales]
-            .sort((first, second) => new Date(second.date).getTime() - new Date(first.date).getTime())
-            .slice(0, 5);
+        const recentSales = [...dashboardSales].sort((first, second) => new Date(second.date).getTime() - new Date(first.date).getTime()).slice(0, 5);
 
         if (recentSales.length === 0) {
             showDashboardMessage(recentSalesBody, "No sales recorded yet.", 4);
@@ -1037,9 +721,7 @@
         }
 
         const lowStockBody = document.getElementById("lowStockBody");
-        const lowStockProducts = dashboardProducts.filter((product) => {
-            return Number(product.stock) <= 5;
-        });
+        const lowStockProducts = dashboardProducts.filter((product) => Number(product.stock) <= 5);
 
         if (lowStockProducts.length === 0) {
             showDashboardMessage(lowStockBody, "No low stock products.", 3);
@@ -1059,81 +741,37 @@
         function createDashboardDetailItem(item) {
             const row = document.createElement("div");
             row.className = "dashboard-detail-item";
-
             const copy = document.createElement("div");
             copy.className = "dashboard-detail-item-copy";
-
             const title = document.createElement("strong");
             title.textContent = item.title;
             copy.appendChild(title);
-
             const subtitle = document.createElement("small");
             subtitle.textContent = item.subtitle;
             copy.appendChild(subtitle);
             row.appendChild(copy);
-
             const tag = document.createElement("span");
             tag.className = "dashboard-detail-tag";
             tag.textContent = item.tag;
             row.appendChild(tag);
-
             return row;
         }
 
         function renderDashboardMetricDetails(metricKey, detailsPanel) {
             const metricConfig = {
-                pets: {
-                    title: "Pet Records",
-                    items: dashboardPets.map((pet) => ({
-                        title: pet.name,
-                        subtitle: [pet.type, pet.breed, pet.age ? `${pet.age} yr` : ""]
-                            .filter(Boolean)
-                            .join(" · "),
-                        tag: pet.status || "Unlisted"
-                    }))
-                },
-                products: {
-                    title: "Product Stock",
-                    items: dashboardProducts.map((product) => ({
-                        title: product.name,
-                        subtitle: `${product.category || "Product"} · ${formatDashboardCurrency(product.price)}`,
-                        tag: `${product.stock} in stock`
-                    }))
-                },
-                customers: {
-                    title: "Customer Directory",
-                    items: dashboardCustomers.map((customer) => ({
-                        title: customer.name,
-                        subtitle: [customer.email, customer.phone].filter(Boolean).join(" · "),
-                        tag: customer.id || "Customer"
-                    }))
-                },
-                sales: {
-                    title: "Sales Today",
-                    items: dashboardSales
-                        .filter((sale) => isToday(sale.date))
-                        .map((sale) => {
-                            const date = new Date(sale.date);
-                            return {
-                                title: sale.customerName || "Walk-in Customer",
-                                subtitle: `${sale.id || "Sale"}${Number.isNaN(date.getTime()) ? "" : ` · ${date.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}`}`,
-                                tag: formatDashboardCurrency(sale.total)
-                            };
-                        })
-                }
+                pets: { title: "Pet Records", items: dashboardPets.map((pet) => ({ title: pet.name, subtitle: [pet.type, pet.breed, pet.age ? `${pet.age} yr` : ""].filter(Boolean).join(" · "), tag: pet.status || "Unlisted" })) },
+                products: { title: "Product Stock", items: dashboardProducts.map((product) => ({ title: product.name, subtitle: `${product.category || "Product"} · ${formatDashboardCurrency(product.price)}`, tag: `${product.stock} in stock` })) },
+                customers: { title: "Customer Directory", items: dashboardCustomers.map((customer) => ({ title: customer.name, subtitle: [customer.email, customer.phone].filter(Boolean).join(" · "), tag: customer.id || "Customer" })) },
+                sales: { title: "Sales Today", items: dashboardSales.filter((sale) => isToday(sale.date)).map((sale) => { const date = new Date(sale.date); return { title: sale.customerName || "Walk-in Customer", subtitle: `${sale.id || "Sale"}${Number.isNaN(date.getTime()) ? "" : ` · ${date.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}`}`, tag: formatDashboardCurrency(sale.total) }; }) }
             };
 
             const config = metricConfig[metricKey];
-            if (!config) {
-                return;
-            }
+            if (!config) return;
 
             detailsPanel.replaceChildren();
-
             const heading = document.createElement("div");
             heading.className = "dashboard-detail-heading";
             heading.append(document.createTextNode(config.title));
-
             const count = document.createElement("span");
             count.className = "dashboard-detail-count";
             count.textContent = `${config.items.length} ${config.items.length === 1 ? "record" : "records"}`;
@@ -1156,26 +794,16 @@
 
         document.querySelectorAll(".dashboard-view-details[data-metric]").forEach((button) => {
             const detailsPanel = document.getElementById(button.getAttribute("aria-controls"));
-
             button.addEventListener("click", () => {
                 const isExpanded = button.getAttribute("aria-expanded") === "true";
-
                 document.querySelectorAll(".dashboard-view-details[data-metric]").forEach((otherButton) => {
-                    if (otherButton !== button) {
-                        otherButton.setAttribute("aria-expanded", "false");
-                    }
+                    if (otherButton !== button) otherButton.setAttribute("aria-expanded", "false");
                 });
-
                 button.setAttribute("aria-expanded", String(!isExpanded));
                 detailsPanel.hidden = isExpanded;
-
-                if (!isExpanded) {
-                    renderDashboardMetricDetails(button.dataset.metric, detailsPanel);
-                }
+                if (!isExpanded) renderDashboardMetricDetails(button.dataset.metric, detailsPanel);
             });
         });
     </script>
-
 </body>
-
 </html>

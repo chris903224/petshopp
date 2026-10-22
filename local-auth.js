@@ -6,10 +6,7 @@
 
     function getAccounts() {
         const saved = localStorage.getItem(ACCOUNTS_KEY);
-        if (saved === null) {
-            return [];
-        }
-
+        if (saved === null) return [];
         const accounts = JSON.parse(saved);
         if (!Array.isArray(accounts)) {
             throw new Error("Saved account data is invalid. Clear the petShopLocalAccounts browser-storage entry to start over.");
@@ -34,18 +31,13 @@
 
     function showLoginError(message) {
         const messageElement = document.getElementById("loginMessage");
-        if (messageElement) {
-            messageElement.textContent = message;
-        } else {
-            window.alert(message);
-        }
+        if (messageElement) messageElement.textContent = message;
+        else window.alert(message);
     }
 
     async function initializeLoginPage() {
         const form = document.getElementById("loginForm");
-        if (!form) {
-            return;
-        }
+        if (!form) return;
 
         const emailInput = document.getElementById("loginEmail");
         const passwordInput = document.getElementById("loginPassword");
@@ -53,6 +45,11 @@
         const modeButton = document.getElementById("modeButton");
         const subtitle = document.getElementById("loginSubtitle");
         const passwordHelp = document.getElementById("passwordHelp");
+        const wrapper = document.querySelector(".login-double-card");
+        const formTitle = document.getElementById("formTitle");
+        const modeLabel = document.getElementById("modeLabel");
+        const togglePassword = document.getElementById("togglePassword");
+
         let creatingAccount = false;
 
         try {
@@ -65,11 +62,31 @@
             return;
         }
 
+        if (togglePassword) {
+            togglePassword.addEventListener("click", () => {
+                const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+                passwordInput.setAttribute("type", type);
+                togglePassword.textContent = type === "password" ? "👁️" : "🙈";
+            });
+        }
+
         modeButton.addEventListener("click", () => {
             creatingAccount = !creatingAccount;
-            subtitle.textContent = creatingAccount ? "Create an employee account" : "Employee sign in";
-            submitButton.textContent = creatingAccount ? "Create account" : "Sign in";
-            modeButton.textContent = creatingAccount ? "Back to sign in" : "Create an account";
+            if (creatingAccount) {
+                if(wrapper) wrapper.setAttribute("data-mode", "register");
+                if(modeLabel) modeLabel.textContent = "CREATE ACCOUNT";
+                if(formTitle) formTitle.textContent = "Join us today";
+                subtitle.textContent = "Register a new employee account to start managing.";
+                submitButton.innerHTML = '<span class="icon">👤+</span> Create account';
+                modeButton.innerHTML = '<span class="icon">←</span> Back to sign in';
+            } else {
+                if(wrapper) wrapper.setAttribute("data-mode", "signin");
+                if(modeLabel) modeLabel.textContent = "WELCOME BACK";
+                if(formTitle) formTitle.textContent = "Welcome back";
+                subtitle.textContent = "Glad to see you again. Log in to continue.";
+                submitButton.innerHTML = '<span class="icon">→</span> Sign in';
+                modeButton.innerHTML = '<span class="icon">👤+</span> Create an account';
+            }
             passwordHelp.hidden = !creatingAccount;
             passwordInput.autocomplete = creatingAccount ? "new-password" : "current-password";
             passwordInput.minLength = creatingAccount ? 8 : 1;
@@ -80,6 +97,7 @@
             event.preventDefault();
             document.getElementById("loginMessage").textContent = "";
             submitButton.disabled = true;
+            const originalBtnHTML = submitButton.innerHTML;
             submitButton.textContent = creatingAccount ? "Creating..." : "Signing in...";
 
             try {
@@ -89,12 +107,8 @@
                 let account;
 
                 if (creatingAccount) {
-                    if (password.length < 8) {
-                        throw new Error("Choose a password with at least 8 characters.");
-                    }
-                    if (accounts.some((item) => item.email === email)) {
-                        throw new Error("An account with this email already exists. Sign in instead.");
-                    }
+                    if (password.length < 8) throw new Error("Choose a password with at least 8 characters.");
+                    if (accounts.some((item) => item.email === email)) throw new Error("An account with this email already exists. Sign in instead.");
                     const salt = bytesToHex(crypto.getRandomValues(new Uint8Array(16)));
                     account = { email, salt, passwordHash: await hashPassword(password, salt) };
                     localStorage.setItem(ACCOUNTS_KEY, JSON.stringify([...accounts, account]));
@@ -110,15 +124,13 @@
             } catch (error) {
                 showLoginError(error instanceof Error ? error.message : "Could not create account or sign in.");
                 submitButton.disabled = false;
-                submitButton.textContent = creatingAccount ? "Create account" : "Sign in";
+                submitButton.innerHTML = originalBtnHTML;
             }
         });
     }
 
     function initializeProtectedPage() {
-        if (!document.body.hasAttribute("data-requires-login")) {
-            return;
-        }
+        if (!document.body.hasAttribute("data-requires-login")) return;
 
         try {
             const session = JSON.parse(localStorage.getItem(SESSION_KEY) || "null");
@@ -128,15 +140,69 @@
             }
 
             const emailLabel = document.getElementById("currentUserEmail");
-            if (emailLabel) {
-                emailLabel.textContent = session.email;
+            if (emailLabel) emailLabel.textContent = session.email;
+
+            // =========================================
+            // DROPDOWN TOGGLE LOGIC
+            // =========================================
+            const profileToggleBtn = document.getElementById("profileToggleBtn");
+            const profileDropdownMenu = document.getElementById("profileDropdownMenu");
+            
+            if (profileToggleBtn && profileDropdownMenu) {
+                profileToggleBtn.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    profileDropdownMenu.classList.toggle("show");
+                });
+
+                document.addEventListener("click", (e) => {
+                    if (!profileToggleBtn.contains(e.target) && !profileDropdownMenu.contains(e.target)) {
+                        profileDropdownMenu.classList.remove("show");
+                    }
+                });
             }
 
-            document.getElementById("logoutButton")?.addEventListener("click", () => {
-                localStorage.removeItem(SESSION_KEY);
-                window.location.replace("login.html");
-            });
+            // =========================================
+            // CUSTOM LOGOUT CONFIRMATION LOGIC
+            // =========================================
+            const logoutTriggerBtn = document.getElementById("logoutTriggerBtn");
+            const sidebarLogoutBtn = document.getElementById("sidebarLogoutBtn");
+            const logoutConfirmModal = document.getElementById("logoutConfirmModal");
+            const cancelLogoutBtn = document.getElementById("cancelLogoutBtn");
+            const actualLogoutBtn = document.getElementById("logoutButton");
 
+            if (logoutConfirmModal) {
+                // Dropdown Sign out trigger
+                if (logoutTriggerBtn) {
+                    logoutTriggerBtn.addEventListener("click", () => {
+                        if (profileDropdownMenu) profileDropdownMenu.classList.remove("show");
+                        logoutConfirmModal.classList.add("show");
+                    });
+                }
+
+                // Sidebar Sign out trigger
+                if (sidebarLogoutBtn) {
+                    sidebarLogoutBtn.addEventListener("click", () => {
+                        logoutConfirmModal.classList.add("show");
+                    });
+                }
+
+                // Cancel button
+                if (cancelLogoutBtn) {
+                    cancelLogoutBtn.addEventListener("click", () => {
+                        logoutConfirmModal.classList.remove("show");
+                    });
+                }
+
+                // Confirm logout
+                if (actualLogoutBtn) {
+                    actualLogoutBtn.addEventListener("click", () => {
+                        localStorage.removeItem(SESSION_KEY);
+                        window.location.replace("login.html");
+                    });
+                }
+            }
+
+            // SYNC SESSION ACROSS TABS
             window.addEventListener("storage", (event) => {
                 if (event.key === SESSION_KEY && event.newValue === null) {
                     window.location.replace("login.html");
